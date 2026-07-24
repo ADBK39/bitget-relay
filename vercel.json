@@ -1,5 +1,6 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/api/relay" }
+  "routes": [
+    { "src": "/api/relay", "dest": "/api/relay" },
+    { "src": "/(.*)", "dest": "/api/relay?path=/$1" }
   ]
 }
