@@ -12,7 +12,9 @@ export default async function handler(req, res) {
   }
 
   const url = new URL(req.url, "http://x");
-  const targetUrl = `https://api.bitget.com${url.pathname}${url.search}`;
+  const originalPath = url.searchParams.get("path") || url.pathname;
+  url.searchParams.delete("path");
+  const targetUrl = `https://api.bitget.com${originalPath}${url.search}`;
 
   const headers = {};
   Object.entries(req.headers).forEach(([k, v]) => {
